@@ -1,4 +1,3 @@
-// slices/todosSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Todo } from '@/components/types';
 
