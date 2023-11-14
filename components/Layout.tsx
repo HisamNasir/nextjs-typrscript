@@ -7,7 +7,6 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ title, children }) => {
   return (
     <div className="container w-full mt-10">
-
       <header className="mb-8">
         <nav className=" gap-4 flex">
           <Link href="/">
