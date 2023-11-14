@@ -24,26 +24,25 @@ const TodoApp = () => {
   };
 
   return (
-    <Container component="main" className='p-4' >
-      <Paper className='p-4' elevation={8} >
-        <h1 className='p-4 font-black text-4xl'>Todo App</h1>
-        <div className=' bg-slate-100 rounded-xl'>
+    <Container className=' space-y-4' component="main">
+      
+        <h1 className='p-4 font-thin text-center uppercase text-4xl text-white'>To-do list</h1>
         
-        <TodoList />
-        <div className='flex p-4 gap-2 '>
+        <div className='flex p-2 gap-2 bg-white rounded'>
           <TextField
-            variant="outlined"
+            
             label="Add Todo"
-            fullWidth
+            
             value={newTodoText}
             onChange={(e) => setNewTodoText(e.target.value)}
           />
           <Button variant="contained" className=' gap-2 '  onClick={handleAddTodo}>
             <span><FaPlus/></span> <span>Add</span>
           </Button>
+        
         </div>
-        </div>
-      </Paper>
+        
+        <TodoList />
     </Container>
   );
 };

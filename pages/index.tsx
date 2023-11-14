@@ -46,13 +46,12 @@ export default function Home() {
   // }
 
   return (
-    <div>
+    <div className='bg-sky-700 h-screen flex flex-col justify-center  items-center'>
       <Head>
         <title>Todo App</title>
         <meta name="description" content="Todo App with Next.js, TypeScript, and Material-UI" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <main>
         <TodoApp />
       </main>

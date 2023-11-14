@@ -1,6 +1,5 @@
 'use client'
 import Layout from "@/components/Layout";
-
 const About: React.FC = () => {
   return (
     <Layout title="About">

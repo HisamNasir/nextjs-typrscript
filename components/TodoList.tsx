@@ -28,13 +28,13 @@ const TodoList: FunctionComponent<TodoListProps> = () => {
   };
 
   return (
-    <List className="bg-blue-200 rounded-xl space-y-2">
+    <List className=" bg-white rounded space-y-2">
       {todos.map((todo) => (
         <ListItem className=" " key={todo.id} dense button>
           <ListItemText primary={todo.text} />
-          <ListItemSecondaryAction className=" flex items-center text-sm">
+          <ListItemSecondaryAction className=" ">
             <IconButton onClick={() => handleDelete(todo.id)}  edge="end" >
-              <FaTrash/>
+              <span className="flex items-center text-red-500 text-lg"><FaTrash/></span>
             </IconButton>
           </ListItemSecondaryAction>
         </ListItem>
