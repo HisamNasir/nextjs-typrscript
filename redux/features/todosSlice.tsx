@@ -1,45 +1,33 @@
-'use client'
+// slices/todosSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface Todo {
-  id: number;
-  text: string;
-}
+import { Todo } from '@/components/types';
 
 interface TodosState {
-  list: Todo[];
+  todos: Todo[];
 }
 
 const initialState: TodosState = {
-  list: [],
+  todos: [],
 };
-const storedTodos = typeof window !== 'undefined' ? localStorage.getItem('todos') : null;
-if (storedTodos) {
-  initialState.list = JSON.parse(storedTodos);
-}
+
 const todosSlice = createSlice({
   name: 'todos',
   initialState,
   reducers: {
-    addTodo: (state, action: PayloadAction<string>) => {
-      const newTodo: Todo = {
-        id: state.list.length + 1,
-        text: action.payload,
-      };
-      state.list.push(newTodo);
+    addTodo: (state, action: PayloadAction<Todo>) => {
+      state.todos = [...state.todos, action.payload];
     },
-    removeTodo: (state, action: PayloadAction<number>) => {
-      state.list = state.list.filter((todo) => todo.id !== action.payload);
-    },
-    updateTodo: (state, action: PayloadAction<{ id: number; text: string }>) => {
-      const todoToUpdate = state.list.find((todo) => todo.id === action.payload.id);
-      if (todoToUpdate) {
-        todoToUpdate.text = action.payload.text;
+    toggleTodo: (state, action: PayloadAction<number>) => {
+      const todo = state.todos.find((t) => t.id === action.payload);
+      if (todo) {
+        todo.completed = !todo.completed;
       }
+    },
+    deleteTodo: (state, action: PayloadAction<number>) => {
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
     },
   },
 });
 
-export const { addTodo, removeTodo, updateTodo } = todosSlice.actions;
-
+export const { addTodo, toggleTodo, deleteTodo } = todosSlice.actions;
 export default todosSlice.reducer;

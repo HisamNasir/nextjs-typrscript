@@ -5,6 +5,8 @@ import Layout from '@/components/Layout';
 import Demo from '@/components/Demo';
 import TodoList from '@/components/TodoList';
 import { FC } from 'react';
+import Head from 'next/head';
+import TodoApp from '@/components/TodoApp';
 const lato = Lato({ weight: ["100", "300", "400", "700", "900"], subsets: ['latin'] })
 
 export default function Home() {
@@ -44,14 +46,16 @@ export default function Home() {
   // }
 
   return (
-    <main className='w-full'>
-      <div>
-        <Layout title="Home">
-          <h1 className="text-4xl font-bold mb-4">Todo List</h1>
-          <TodoList />
-          {/* <Demo name="Your Name" /> */}
-        </Layout>
-      </div>
-    </main>
-  )
+    <div>
+      <Head>
+        <title>Todo App</title>
+        <meta name="description" content="Todo App with Next.js, TypeScript, and Material-UI" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <main>
+        <TodoApp />
+      </main>
+    </div>
+  );
 }
